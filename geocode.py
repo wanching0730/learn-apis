@@ -9,4 +9,6 @@ def getGeocodeLocation(inputString):
 	h = httplib2.Http()
 	response, content = h.request(url, 'GET')
 	result = json.loads(content)
-	return result
+	longitude = result['results'][0]['geometry']['location']['lng']
+	latitude = result['results'][0]['geometry']['location']['lat']
+	return (longitude, latitude)
