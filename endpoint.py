@@ -6,7 +6,7 @@ def puppyFunction():
 	return "Yes, puppies!"
 
 @app.route("/puppies/<int:id>")
-def puppiesFunction(id):
+def puppiesFunctionId(id):
 	return "This method will act on the puppy with id %s" % id
 
 if __name__ == '__main__':
