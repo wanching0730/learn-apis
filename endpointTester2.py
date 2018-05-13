@@ -57,3 +57,22 @@ except Exception as err:
 else:
 	print "Test 3 PASS: Succesfully Made GET Request to /puppies/id"
 
+
+# Making PUT request 
+print "Making PUT requests to /puppies/id"
+try:
+	id = 1
+	while id <= 10:
+		url = address + "/puppies/%s" % id
+		h = httplib2.Http()
+		response, result = h.request(url, 'PUT')
+		if response['status'] != '200':
+			raise Exception('Received an unsuccessful status code of %s' % resp['status'])
+		id = id + 1
+except Exception as err:
+	print "Test 4 FAILED: Could not make PUT Request to web server"
+	print err.args
+	sys.exit()
+else:
+	print "Test 4 PASS: Succesfully Made PUT Request to /puppies/id"
+
