@@ -38,3 +38,22 @@ except Exception as err:
 else:
 	print "Test 2 pass: successfully made POST request to /puppies"
 
+
+# Making GET request to /puppies/id
+print "Making GET request to /puppies/id"
+try: 
+	id = 1
+	while id <= 10:
+		url = address + "/puppies/%s" % id
+		h = httplib2.Http()
+		response, result = h.request(url, 'GET')
+		if response['status'] != '200':
+			raise Exception('Received an unsuccessful status code of %s' % resp['status'])
+		id = id + 1
+except Exception as err:
+	print "Test 3 FAILED: Could not make GET Requests to web server"
+	print err.args
+	sys.exit()
+else:
+	print "Test 3 PASS: Succesfully Made GET Request to /puppies/id"
+
