@@ -34,12 +34,11 @@ try:
 	if response['status'] != '200':
 		raise Exception('Received an unsuccessful status code of %s' % response['status'])
 except Exception as err:
-	print "Test 2 FAILED: Could not make GET Request to web server"
-	print err.args
+	print("Test 2 FAILED: Could not make GET Request to web server")
+	print(err.args)
 	sys.exit()
 else:
-	print "Test 2 PASS: Succesfully Made GET Request to /puppies"
-
+	print("Test 2 PASS: Succesfully Made GET Request to /puppies")
 
 # making get request to /puppies/id
 print("making get request to /puppies/id")
@@ -50,11 +49,11 @@ try:
 	if response['status'] != '200':
 		raise Exception('Received an unsuccessful status code of %s' % response['status'])
 except Exception as err:
-	print "Test 3 FAILED: Could not make GET Requests to web server"
-	print err.args
+	print("Test 3 FAILED: Could not make GET Requests to web server")
+	print(err.args)
 	sys.exit()
 else:
-	print "Test 3 PASS: Succesfully Made GET Request to /puppies/id"
+	print("Test 3 PASS: Succesfully Made GET Request to /puppies/id")
 
 
 # making put request
@@ -67,11 +66,11 @@ try:
 	if response['status'] != '200':
 		raise Exception('Received an unsuccessful status code of %s' % response['status'])
 	except Exception as err:
-		print "Test 4 FAILED: Could not make PUT Request to web server"
-		print err.args
+		print("Test 4 FAILED: Could not make PUT Request to web server")
+		print(err.args)
 		sys.exit()
 	else:
-		print "Test 4 PASS: Succesfully Made PUT Request to /puppies/id"
+		print("Test 4 PASS: Succesfully Made PUT Request to /puppies/id")
 
 
 
@@ -85,12 +84,12 @@ try:
 	if response['status'] != '200':
 		raise Exception('Received an unsuccessful status code of %s' % response['status'])
 	except Exception as err:
-		print "Test 5 FAILED: Could not make DELETE Requests to web server"
-		print err.args
+		print("Test 5 FAILED: Could not make DELETE Requests to web server")
+		print(err.args)
 		sys.exit()
 	else:
-		print "Test 5 PASS: Succesfully Made DELETE Request to /puppies/id"
-		print "ALL TESTS PASSED!!"
+		print("Test 5 PASS: Succesfully Made DELETE Request to /puppies/id")
+		print("ALL TESTS PASSED!!")
 
 
 
