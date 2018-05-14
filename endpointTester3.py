@@ -65,12 +65,12 @@ try:
 	response, result = h.request(url, 'PUT')
 	if response['status'] != '200':
 		raise Exception('Received an unsuccessful status code of %s' % response['status'])
-	except Exception as err:
-		print("Test 4 FAILED: Could not make PUT Request to web server")
-		print(err.args)
-		sys.exit()
-	else:
-		print("Test 4 PASS: Succesfully Made PUT Request to /puppies/id")
+except Exception as err:
+	print("Test 4 FAILED: Could not make PUT Request to web server")
+	print(err.args)
+	sys.exit()
+else:
+	print("Test 4 PASS: Succesfully Made PUT Request to /puppies/id")
 
 
 
@@ -83,13 +83,13 @@ try:
 	response, result = h.request(url, 'DELETE')
 	if response['status'] != '200':
 		raise Exception('Received an unsuccessful status code of %s' % response['status'])
-	except Exception as err:
-		print("Test 5 FAILED: Could not make DELETE Requests to web server")
-		print(err.args)
-		sys.exit()
-	else:
-		print("Test 5 PASS: Succesfully Made DELETE Request to /puppies/id")
-		print("ALL TESTS PASSED!!")
+except Exception as err:
+	print("Test 5 FAILED: Could not make DELETE Requests to web server")
+	print(err.args)
+	sys.exit()
+else:
+	print("Test 5 PASS: Succesfully Made DELETE Request to /puppies/id")
+	print("ALL TESTS PASSED!!")
 
 
 
