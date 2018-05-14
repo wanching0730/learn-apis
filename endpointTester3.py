@@ -75,5 +75,39 @@ try:
 
 
 
+# making a delete request
+print("making a delete request to /puppies/id")
+try:
+	id = puppyID
+	url = address + "/puppies/%s" % id
+	h = httplib2.Http()
+	response, result = h.request(url, 'DELETE')
+	if response['status'] != '200':
+		raise Exception('Received an unsuccessful status code of %s' % response['status'])
+	except Exception as err:
+		print "Test 5 FAILED: Could not make DELETE Requests to web server"
+		print err.args
+		sys.exit()
+	else:
+		print "Test 5 PASS: Succesfully Made DELETE Request to /puppies/id"
+		print "ALL TESTS PASSED!!"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
