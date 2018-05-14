@@ -41,3 +41,27 @@ else:
 	print "Test 2 PASS: Succesfully Made GET Request to /puppies"
 
 
+# making get request to /puppies/id
+print("making get request to /puppies/id")
+try:
+	url = address + "/puppies/%s" % id
+	h = httplib2.Http()
+	response, result = h.request(url, 'GET')
+	if response['status'] != '200':
+		raise Exception('Received an unsuccessful status code of %s' % resp['status'])
+except Exception as err:
+	print "Test 3 FAILED: Could not make GET Requests to web server"
+	print err.args
+	sys.exit()
+else:
+	print "Test 3 PASS: Succesfully Made GET Request to /puppies/id"
+
+
+
+
+
+
+
+
+
+
