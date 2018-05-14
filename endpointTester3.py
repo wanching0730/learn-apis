@@ -17,3 +17,10 @@ try:
 	puppyID = obj['Puppy']['id']
 	if response['status'] != '200':
 		raise Exception('Received an uncessful status code of  %s' % resp['status'])
+except Exception as err:
+	print("Test 1 failed: counld not make post request to web server")
+	print(err.args)
+	sys.exit()
+else: 
+	print("test 1 pass: successfully made post request to /puppies")
+
