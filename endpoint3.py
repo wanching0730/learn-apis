@@ -17,12 +17,12 @@ def puppiesFunction():
 	if request.method == 'GET':
 		return getAllPuppies()
 	elif request.method == 'POST':
-		print "Making a new puppy"
+		print("Making a new puppy")
 
 		name = request.args.get('name', '')
 		description = request.args.get('description', '')
-		print name
-		print description
+		print(name)
+		print(description)
 		return makeANewPuppy(name, description)
 
 @app.route("/puppies/<int:id>", methods = ['GET', 'PUT', 'DELETE'])
