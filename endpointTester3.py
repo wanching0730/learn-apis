@@ -43,6 +43,7 @@ else:
 # making get request to /puppies/id
 print("making get request to /puppies/id")
 try:
+	id = puppyID
 	url = address + "/puppies/%s" % id
 	h = httplib2.Http()
 	response, result = h.request(url, 'GET')

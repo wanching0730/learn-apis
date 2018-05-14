@@ -62,7 +62,7 @@ def updatePuppy(id, name, description):
 	return "Updated a puppy with id %s" % id
 
 def deletePuppy(id):
-	puppy = puppy.query(Puppy).filter_by(id = id).one()
+	puppy = session.query(Puppy).filter_by(id = id).one()
 	session.delete(puppy)
 	session.commit()
 	return "Removed puppy with id %s" % id
