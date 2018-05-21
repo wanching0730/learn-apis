@@ -1,4 +1,3 @@
-from geocode import getGeocodeLocation
 import json
 import httplib2
 import sys
@@ -9,15 +8,28 @@ sys.stderr = codecs.getwritter('utf8')(sys.stderr)
 
 foursquare_client_id = ""
 foursquare_client_secret = ""
+google_api_key = ""
 
+def getGeoLocation(inputString):
+	# replace space with '+' in url
+	locationString = inputString.replace(" ", "+")
+	url = ('https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=%s'% (locationString, google_api_key))
+	h = httplib2.Http()
+	result = json.loads(h.request(url, 'GET')[1])
+	latitude = result['results'][0]['geometry']['location']['lat']
+	longitude = result['results'][0]['geometry']['location']['lng']
+	return (latitude, longitude)
+
+# take a string representation of a location and cuisine type, geocode the location,
+# and then pass in the latitude and longitude to Foursquare api
 def findRestaurant(mealType, location):
 
 	# get longitude and latitude of the location
-	longitude, latitude = getGeocodeLocation(location)
+	latitude, longitude = getGeocodeLocation(location)
 
 	# use foursquare api to find nearby restaurant with longitude, latitude, mealtype
 	# format for url will be something like https://api.foursquare.com/v2/venues/search?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&v=20130815&ll=40.7,-74&query=sushi
-	url = ('format for url will be something like https://api.foursquare.com/v2/venues/search?client_id=%s&client_secret=%s&v=20130815&ll=%s,%s&query=%s' % (foursquare_client_id, foursquare_client_secret, latitude, longitude, mealType))
+	url = ('https://api.foursquare.com/v2/venues/search?client_id=%s&client_secret=%s&v=20130815&ll=%s,%s&query=%s' % (foursquare_client_id, foursquare_client_secret, latitude, longitude, mealType))
 
 	h = httplib2.Http()
 	result = json.loads(h.request(url, 'GET')[1])
